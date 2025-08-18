@@ -44,10 +44,5 @@
     ansible.builtin.copy:
       src: nginx.conf
       dest: /etc/nginx/nginx.conf.j2
-
-  - name: restarting the service
-    tags:
-    - import
-    ansible.builtin.service:
-      name: nginx
-      state: restarted
+    notify:
+    - restart nginx
