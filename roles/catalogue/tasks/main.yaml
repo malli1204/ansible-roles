@@ -6,7 +6,7 @@
 - name: installing nodejs
   include_role:
     name: common
-    task_from: nodejs
+    tasks_from: nodejs
 
 - name: copying mongodb repo
   ansible.builtin.copy:
@@ -33,5 +33,5 @@
 - name: systemd service
   include_roles:
     name: common
-    task_from: systemd.yaml
+    tasks_from: systemd.yaml
   
