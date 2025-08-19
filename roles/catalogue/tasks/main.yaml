@@ -21,14 +21,17 @@
 - name: check products loaded or not
   ansible.builtin.command: mongosh --host mongodb.malli12.site --eval 'db.getMongo().getDBNames().indexOf("catalogue")'
   register: catalogue_output
+  ignore_error: true
 
 - name: printing catalogue output
   ansible.builtin.debug:
     msg: "{{ catalogue_output }}"
+  ignore_error: true
 
 - name: loading data
   ansible.builtin.shell: mongosh --host mongodb.malli12.site </app/db/master-data.js
   when: catalogue_output.stdout | int < 0
+  ignore_error: true
 
 - name: systemd service
   include_role:
