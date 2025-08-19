@@ -12,7 +12,7 @@
 
 - name: creating the app file
   ansible.builtin.file:
-    state: present
+    state: directory
     path: /app
 
 - name: downloading the application
@@ -29,4 +29,3 @@
   ansible.builtin.service:
     name: "{{ component }}"
     state: restarted
-    
